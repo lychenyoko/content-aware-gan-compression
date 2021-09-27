@@ -20,7 +20,7 @@ We propose a novel content-aware approach for GAN compression. With content-awar
 
 <a><img src='doc/Teaser.gif' width=1100></a>
 
-We show an example above on the generative ability of our **11x-accelerated** generator vs. the full-szie one. In particular, our model generates the interested contents visually comparable to the full-size model.
+We show an example above on the generative ability of our **11x-accelerated** generator vs. the full-size one. In particular, our model generates the interested contents visually comparable to the full-size model.
 
 
 
@@ -90,7 +90,7 @@ We adopt a uniform channel pruning ratio for every layer. Above procedure will r
 
 ### Retraining
 
-We then retrian the pruned generator by:
+We then retrain the pruned generator by:
 
 ```bash
 python3 train.py \
@@ -168,7 +168,7 @@ An example of `Image_Projection_Visualization.png` projected by a full-size 256p
 
 
 
-### 11x-Acclerated Generator Checkpoint
+### 11x-Accelerated Generator Checkpoint
 
 We provide the following checkpoints of our content-aware compressed StyleGAN2: 
 

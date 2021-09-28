@@ -38,7 +38,7 @@ parser.add_argument('--n_mlp', type=int, default=train_hyperparams.n_mlp)
 parser.add_argument('--load_train_state', type=bool, default=train_hyperparams.load_train_state)
 
 parser.add_argument('--iter', type=int, default=train_hyperparams.training_iters)
-parser.add_argument('--batch', type=int, default=train_hyperparams.batch_size)
+parser.add_argument('--batch_size', type=int, default=train_hyperparams.batch_size)
 parser.add_argument('--lr', type=float, default=train_hyperparams.init_lr)
 parser.add_argument('--r1', type=float, default=train_hyperparams.discriminator_r1)
 parser.add_argument('--path_regularize', type=float, default=train_hyperparams.generator_path_reg_weight)
@@ -87,7 +87,7 @@ def Print_Experiment_Status(exp_log_file):
           '    Number of GPUs: ' + str(n_gpu) + '\n\n' + \
           '  Training Params: ' + '\n' + \
           '    Training Iterations: ' + str(args.iter) + '\n' + \
-          '    Batch Size: ' + str(args.batch) + '\n' + \
+          '    Batch Size: ' + str(args.batch_size) + '\n' + \
           '    Learning Rate: ' + str(args.lr) + '\n' + \
           '    Generator Path Regularization Frequency: ' + str(args.g_reg_every) + '\n' + \
           '    Path Regularization Weight: ' + str(args.path_regularize) + '\n' + \
@@ -247,7 +247,7 @@ def D_Loss_BackProp(generator, discriminator, real_img, args, device, loss_dict,
     requires_grad(generator, False)
     requires_grad(discriminator, True)
 
-    noise = mixing_noise(args.batch, args.latent, args.mixing, device)
+    noise = mixing_noise(args.batch_size, args.latent, args.mixing, device)
     fake_img = generator(noise)
     fake_pred = discriminator(fake_img)
     real_pred = discriminator(real_img)
@@ -287,7 +287,7 @@ def G_Loss_BackProp(generator, discriminator, args, device, loss_dict, g_optim, 
     requires_grad(discriminator, False)
 
     # GAN Loss
-    noise, inject_index = index_aware_mixing_noise(args.batch, args.latent, args.mixing, args.n_latent, device)
+    noise, inject_index = index_aware_mixing_noise(args.batch_size, args.latent, args.mixing, args.n_latent, device)
     fake_img_list = generator(noise, return_rgb_list=True, inject_index=inject_index)
     fake_img = fake_img_list[-1]
     fake_pred = discriminator(fake_img)
@@ -313,7 +313,7 @@ def G_Reg_BackProp(generator, args, mean_path_length, g_optim):
         To update the generator based on the regularization
     '''
 
-    path_batch_size = max(1, args.batch // args.path_batch_shrink)
+    path_batch_size = max(1, args.batch_size // args.path_batch_shrink)
     noise = mixing_noise(path_batch_size, args.latent, args.mixing, device)
     
     fake_img, path_lengths = generator(noise, PPL_regularize=True)
@@ -472,7 +472,7 @@ if __name__ == '__main__':
     
     train_dataset = FFHQ_Dataset(args.path, transform)
     loader = data.DataLoader(train_dataset,
-                             batch_size = args.batch,
+                             batch_size = args.batch_size,
                              shuffle=True,
                              num_workers=8)
 

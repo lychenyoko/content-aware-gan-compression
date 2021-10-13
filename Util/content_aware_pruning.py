@@ -149,7 +149,7 @@ def vis_parsing_maps(im, parsing_anno, stride):
     return vis_im
 
 
-def Get_Salt_Pepper_Nosiy_Image(img_tensor, mask, prob):
+def Get_Salt_Pepper_Noisy_Image(img_tensor, mask, prob):
     '''
     Usage:
         Obtain the salt & pepper noisy image 
@@ -237,7 +237,7 @@ def Get_Content_Aware_Pruning_Score(generator, n_sample, batch_size, noise_prob,
             resized_mask = np.array(Image.fromarray(mask).resize((img_size, img_size)))
             
             # Get noisy images
-            noisy_img = Get_Salt_Pepper_Nosiy_Image(single_img, resized_mask, noise_prob)
+            noisy_img = Get_Salt_Pepper_Noisy_Image(single_img, resized_mask, noise_prob)
             noisy_img_list.append(noisy_img)
         
         # Compute the gradient

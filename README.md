@@ -166,6 +166,9 @@ An example of `Image_Projection_Visualization.png` projected by a full-size 256p
 <a><img src='doc/Image_Projection_Visualization.png' width=700></a>
 
 
+### Helen-Set55
+
+We provide the Helen-Set55 on [Google Drive](https://drive.google.com/file/d/1yp8YswwlKgFHOp6Co4VQzvnS6adUfCDa/view?usp=sharing).
 
 
 ### 11x-Accelerated Generator Checkpoint

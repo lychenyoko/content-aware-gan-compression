@@ -1,6 +1,6 @@
-# Content-Aware GAN Compression [[ArXiv]](https://arxiv.org/abs/2104.02244)
+# Content-Aware GAN Compression [[Paper]](https://openaccess.thecvf.com/content/CVPR2021/html/Liu_Content-Aware_GAN_Compression_CVPR_2021_paper.html)[[ArXiv]](https://arxiv.org/abs/2104.02244)[[Webpage]](https://lychenyoko.github.io/content_aware_gan_compression/)
 
-Paper accepted to CVPR2021. 
+### Paper in CVPR2021
 ```BibTex
 @inproceedings{liu2021content,
   title     = {Content-Aware GAN Compression},
